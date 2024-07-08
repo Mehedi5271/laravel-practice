@@ -27,7 +27,6 @@ class ProductController extends Controller
             'is_active' => $request->has('is_active') ? 1 : 0,
             'image'=> $imageName,
 
-
         ]);
         return redirect()->route('product.index')->withStatus('Data Insert Sucessfully');
 

@@ -20,6 +20,8 @@
         </li>
         <li> <a href="{{route('index.user')}}">All Type User </a> </li>
         <li> <a href="{{route('product.index')}}">All Products </a> </li>
+        <hr>
+        <li> <a href="{{route('donor.index')}}">All Donor Information</a> </li>
        </ul>
 </body>
 </html>

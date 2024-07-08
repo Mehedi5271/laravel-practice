@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DonorController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -24,6 +25,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/trash',[ProductController::class,'trash'])->name('product.trash');
     Route::patch('/trash/{id}',[ProductController::class,'restore'])->name('product.restore');
     Route::delete('/trash/{id}',[ProductController::class,'delete'])->name('product.delete');
+
+
+    Route::get('/donors',[DonorController::class,'index'])->name('donor.index');
+    Route::get('/donors/create',[DonorController::class,'create'])->name('donor.create');
+    Route::post('/donors',[DonorController::class,'store'])->name('donor.store');
+    Route::get('/donors/{id}/edit',[DonorController::class,'edit'])->name('donor.edit');
+    Route::patch('/donors/{id}',[DonorController::class,'update'])->name('donor.update');
+    Route::delete('/donors/{id}',[DonorController::class,'destroy'])->name('donor.destroy');
+    Route::get('/donors/trash',[DonorController::class,'trash'])->name('donor.trash');
+    Route::patch('/donors/{id}/trash',[DonorController::class,'restore'])->name('donor.restore');
+    Route::delete('/donors/{id}/delete',[DonorController::class,'delete'])->name('donor.delete');
 
 
     Route::get('/user',[UserController::class,'index'])->name('index.user');
