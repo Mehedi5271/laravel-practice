@@ -24,8 +24,7 @@
     </style>
 </head>
 <body>
-    <a href="{{ route('product.create') }}">Create New Product</a> <br>
-    <a href="{{ route('product.trash') }}">Trash Product</a>
+    <a href="{{ route('product.create') }}">Create New Product</a>
     <p>Product List:</p>
     <table>
         <thead>
@@ -49,13 +48,19 @@
                 <td><img src="{{ asset('storage/images/' . $product->image) }}" alt="Product Image"></td>
                 <td>{{ $product->is_active ? 'Yes' : 'No' }}</td>
                 <td>
-                    <a href="{{route('product.edit',['id'=>$product->id])}}">Update</a> <br>
-                    <a href="{{route('product.show',['id'=>$product->id] )}}">Show</a> <br>
-                    <form action="{{route('product.destroy',['id'=>$product->id])}}" method="post">
+                    <form action="{{ route('product.restore', ['id'=> $product->id]) }}" method="POST" style="display: inline;">
+                        @csrf
+                        @method('patch')
+                        <button class="btn btn-sm btn-danger" type="submit">Restore</button>
+                    </form>
+
+                    <form action="{{ route('product.delete', ['id'=> $product->id]) }}" method="POST" style="display: inline;">
                         @csrf
                         @method('delete')
-                        <button>Delete</button>
+                        <button class="btn btn-sm btn-danger" type="submit">Delete</button>
                     </form>
+
+
                 </td>
             </tr>
             @endforeach
